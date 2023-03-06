@@ -1,15 +1,16 @@
-# algorithms
+# Algorithms
 
-To install dependencies:
+Study of algorithms in Typescript with Big O explanations, each tyoe if algorithm will have a `type.ts`, `index.ts`, and `lib.ts`.
 
+
+# Usage
+Each alghoritm type has an associated script.
+## Install bun
 ```bash
 bun install
 ```
 
-To run:
-
 ```bash
-bun run index.ts
+bun graphs
 ```
 
-This project was created using `bun init` in bun v0.5.6. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "graphs": "bun src/graphs/index.ts"
+  },
   "name": "algorithms",
   "type": "module",
   "devDependencies": {
