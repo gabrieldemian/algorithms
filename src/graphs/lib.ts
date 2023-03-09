@@ -1,32 +1,31 @@
-import { Node } from './types'
+import { Graph } from './types'
 
 /** Running time: O(Vertices + Edges)
  *  or commonly O(v + e) for short.
  */
-export function bfs<T>({
+export function bfs({
+  graph,
   startNode,
-  value,
+  target,
 }: {
-  startNode: Node<T>
-  value: T
-}): null | Node<T> {
-  const visited: Node<T>[] = []
-  const queue: Node<T>[] = [startNode]
+  graph: Graph
+  startNode: string
+  target: string
+}): string[] | null {
+  const visited: Set<string> = new Set([])
+  const queue: string[] = [startNode]
+  while (queue.length > 0) {
+    const currentValue = queue.shift()
+    if (!currentValue) break
+    if (visited.has(currentValue)) continue
 
-  while (queue.length !== 0) {
-    const current = queue.shift()
-    if (!current) break
-    if (current.value === value) return current
+    visited.add(currentValue)
 
-    visited.push(current)
-
-    current.adjNodes.forEach((node) => {
-      // if not visited
-      if (visited.indexOf(node) === -1) {
-        visited.push(node)
-        queue.push(node)
-      }
-    })
+    for (const adjNode of graph[currentValue].adjNodes) {
+      if (adjNode === target) return [...visited]
+      if (!visited.has(adjNode)) queue.push(adjNode)
+      console.log('adj node ', adjNode)
+    }
   }
   return null
 }

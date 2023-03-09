@@ -1,40 +1,17 @@
 import { bfs } from './lib'
 import type { Graph } from './types'
 
-const graph: Graph<number> = {
-  nodes: [
-    {
-      value: 1,
-      adjNodes: [
-        {
-          value: 2,
-          adjNodes: [
-            // index 7
-            { value: 3, adjNodes: [{ value: 7, adjNodes: [] }] },
-            { value: 4, adjNodes: [] },
-          ],
-        },
-        {
-          value: 3,
-          adjNodes: [
-            {
-              value: 5,
-              adjNodes: [
-                {
-                  value: 6,
-                  adjNodes: [
-                    // 7 will be the last one, index 10
-                    { value: 8, adjNodes: [{ value: 7, adjNodes: [] }] },
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
+const graph: Graph = {
+  '4': { value: '4', adjNodes: ['5'] },
+  '1': { value: '1', adjNodes: ['3', '2'] },
+  '3': { value: '3', adjNodes: ['4'] },
+  '2': { value: '2', adjNodes: [] },
+  '5': { value: '5', adjNodes: [] },
 }
 
-const node = bfs({ startNode: graph.nodes[0], value: 7 })
+// 5 -> 1 3 2 4
+// 4 -> 1 3
+// 3 -> 1
+// 2 -> 1
+const node = bfs({ startNode: '1', target: '5', graph })
 console.log('found node? ', node)

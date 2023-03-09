@@ -1,10 +1,6 @@
-export type Nada = [nada: string]
-
-export interface Node<T> {
-  value: T
-  adjNodes: Node<T>[]
+export interface Node {
+  value: string
+  adjNodes: string[]
 }
 
-export interface Graph<T> {
-  nodes: Node<T>[]
-}
+export type Graph = Record<string, Node>
